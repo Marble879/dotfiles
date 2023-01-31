@@ -79,6 +79,12 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.vuels.setup {
+  filetypes = { "vue" }
+}
+
+-- TODO: Add python, C, C++, rust, javascript, vue!
+
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
   capabilities = capabilities,
