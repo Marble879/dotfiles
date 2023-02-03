@@ -79,8 +79,8 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
-nvim_lsp.vuels.setup {
-  filetypes = { "vue" }
+nvim_lsp.volar.setup {
+  filetypes = { 'vue' }
 }
 
 -- TODO: Add python, C, C++, rust, javascript, vue!
