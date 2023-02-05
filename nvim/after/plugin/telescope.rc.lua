@@ -15,6 +15,13 @@ telescope.setup {
       n = {
         ["q"] = actions.close,
       },
+      i = {
+        ["<C-o>"] = function(prompt_bufnr) require("telescope.actions").select_default(prompt_bufnr)
+          require("telescope.builtin")
+              .resume()
+        end,
+        ["<C-t>"] = function(prompt_bufnr) actions.file_tab(prompt_bufnr) builtin.resume() end
+      },
     },
   },
   extensions = {
@@ -25,7 +32,11 @@ telescope.setup {
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
-          ["<C-w>"] = function() vim.cmd('normal vbd') end
+          ["<C-w>"] = function() vim.cmd('normal vbd') end,
+          ["<C-o>"] = function(prompt_bufnr) require("telescope.actions").select_default(prompt_bufnr)
+            require("telescope.builtin")
+                .resume()
+          end
         },
         ["n"] = {
           ["<C-a>"] = fb_actions.create,
