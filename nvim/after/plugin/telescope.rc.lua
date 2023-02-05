@@ -7,13 +7,13 @@ local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
-local fb_actions = require "telescope".extensions.file_browser.actions
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
     mappings = {
       n = {
-        ["q"] = actions.close
+        ["q"] = actions.close,
       },
     },
   },
@@ -25,13 +25,12 @@ telescope.setup {
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
-          ["<C-w>"] = function() vim.cmd('normal vbd') end,
+          ["<C-w>"] = function() vim.cmd('normal vbd') end
         },
         ["n"] = {
-          -- your custom normal mode mappings
           ["<C-a>"] = fb_actions.create,
-          ["h"] = fb_actions.goto_parent_dir,
-          ["/"] = function() vim.cmd('startinsert') end
+          ["<C-d>"] = fb_actions.remove,
+          ["<C-h>"] = fb_actions.goto_parent_dir
         },
       },
     },
