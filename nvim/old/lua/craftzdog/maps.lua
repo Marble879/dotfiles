@@ -6,10 +6,7 @@ keymap.set('n', 'x', '"_x')
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
--- Delete a word backwards
-keymap.set('n', 'dw', 'vb"_d')
-
--- Select all
+-- Delete a word backwards keymap.set('n', 'dw', 'vb"_d') Select all
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- Save with root permission (not working for now)
