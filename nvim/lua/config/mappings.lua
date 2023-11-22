@@ -6,3 +6,4 @@ vim.g.mapleader = " "
 
 -- map leader+y to copy to system clipboard in normal and visual mode
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true })
+
