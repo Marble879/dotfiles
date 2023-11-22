@@ -10,3 +10,11 @@ vim.opt.softtabstop = 2
 -- use number of spaces to insert a <Tab>
 vim.opt.expandtab = true
 
+-- Disable line wrapping
+vim.opt.wrap = false
+
+-- Case insensitive searching Unless /C or capital in search
+vim.opt.ignorecase = true
+
+-- System wide copy with yy
+vim.opt.clipboard = "unnamed"
