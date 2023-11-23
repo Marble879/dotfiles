@@ -10,6 +10,6 @@ local keymap = vim.keymap
 keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true })
 
 -- Map tab functionality
-keymap.set({"n"}, "<Tab>", ":+tabnext<CR>", { noremap = true, silent = true}) -- Move to next tab
-keymap.set({"n"}, "<Shift-Tab>", ":-tabnext<CR>", { noremap = true, silent = true}) -- Move to previous tab
+keymap.set({"n"}, "<Tab>", ":tabnext<CR>", { noremap = true, silent = true}) -- Move to next tab
+keymap.set({"n"}, "<S-Tab>", ":tabprev<CR>", { noremap = true, silent = true}) -- Move to previous tab
 
