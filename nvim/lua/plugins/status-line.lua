@@ -1,6 +1,13 @@
 return {
-  "vim-airline/vim-airline",
-  dependencies = {
-    "vim-airline/vim-airline-themes"
-  }
+  "nvim-lualine/lualine.nvim",
+  config = function()
+    local lualine = require("lualine")
+
+    lualine.setup({
+      options = {
+        icons_enabled = true,
+        theme = 'ayu_mirage'
+      }
+    })
+  end,
 }

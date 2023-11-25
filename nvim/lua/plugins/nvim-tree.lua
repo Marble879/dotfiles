@@ -13,11 +13,11 @@ return {
     -- set termguicolors to enable highlight groups
     vim.opt.termguicolors = true
 
-    -- nvim-tree configuration   
+    -- nvim-tree configuration
     nvimtree.setup({
       view = {
         width = 35,
-        relativenumber = false 
+        relativenumber = false
       },
       -- change folder arrow icons
       renderer = {
@@ -46,15 +46,12 @@ return {
       git = {
         ignore = false, -- Make files in .gitignore still visible in nvim-tree
       },
-    }) 
+    })
 
     -- set keymaps
     local keymap = vim.keymap
-    keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer"}) -- toggle file explorer
+    keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })                         -- toggle file explorer
     keymap.set("n", "<leader>tf", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>tr", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-
-
-    
+    keymap.set("n", "<leader>tr", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })                       -- refresh file explorer
   end,
 }
