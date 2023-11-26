@@ -1,9 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile"}, -- Load plugin whenever open new buffer/pre eixsitng file. Second one means load plugin when open new buffer/new file that doesnt exist
+  event = { "BufReadPre", "BufNewFile" },                 -- Load plugin whenever open new buffer/pre eixsitng file. Second one means load plugin when open new buffer/new file that doesnt exist
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp", -- Completion source so have LSP reccomendation in auto completion
-    {"antosha417/nvim-lsp-file-operations", config=true}, -- lets us rename files via nvim tree + update any effected import statements
+    "hrsh7th/cmp-nvim-lsp",                               -- Completion source so have LSP reccomendation in auto completion
+    { "antosha417/nvim-lsp-file-operations", config = true }, -- lets us rename files via nvim tree + update any effected import statements
   },
   config = function()
     -- import lspconfig plugin
@@ -14,8 +14,8 @@ return {
 
     local keymap = vim.keymap
 
-    local opts = { noremap = true, silent = true} -- table of options for keymaps
-    local on_attach = function(client, bufnr) -- allows us to define a set of keymaps that will only apply when a given language server attaches to a buffer
+    local opts = { noremap = true, silent = true } -- table of options for keymaps
+    local on_attach = function(client, bufnr)     -- allows us to define a set of keymaps that will only apply when a given language server attaches to a buffer
       opts.buffer = bufnr
 
       -- set keybinds
@@ -28,10 +28,10 @@ return {
 
 
     -- Change the Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " "}
-    for type, icon in pairs(signs) do -- go through signs table
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    for type, icon in pairs(signs) do                                 -- go through signs table
       local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = ""}) -- sets the icon for the different types
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" }) -- sets the icon for the different types
     end
 
 
@@ -59,7 +59,6 @@ return {
 
 
     -- Python
-
     lspconfig["pylsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -67,11 +66,11 @@ return {
 
     -- Rust
 
-  local util = require("lspconfig/util")
-  lspconfig["rust_analyzer"].setup({
+    local util = require("lspconfig/util")
+    lspconfig["rust_analyzer"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      filetypes={"rust"},
+      filetypes = { "rust" },
       root_dir = util.root_pattern("Cargo.toml"),
       settings = {
         ['rust-analyzer'] = {
@@ -90,7 +89,7 @@ return {
         Lua = {
           -- m,ake the language server recognize "vim" global
           diagnostics = {
-            globals = {"vim"},
+            globals = { "vim" },
           },
           workspace = {
             -- make language server aware of runtime files
@@ -102,6 +101,5 @@ return {
         },
       },
     })
-
   end,
 }
