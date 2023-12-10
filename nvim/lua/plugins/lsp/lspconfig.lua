@@ -34,6 +34,24 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" }) -- sets the icon for the different types
     end
 
+    -- Change diagnostic defaults
+    vim.diagnostic.config({     -- The following are the same as the defaults
+      virtual_text = true,      -- Show line diagnostics
+      signs = true,             -- Use signs in diagnostics
+      underline = true,         -- Underline line with diagnostic issue
+      update_in_insert = false, -- Update live, false by default so updates only after save.
+      severity_sort = false,
+    })
+
+    -- Show line diagnostics in hover window when cursor is on line with diagnostic
+    vim.o.updatetime = 500
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+      callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+      end
+    })
+
 
 
     -- Web dev
