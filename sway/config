@@ -55,7 +55,7 @@ output * bg ~/Pictures/Warp-3.jpg fill
 #       natural_scroll enabled
 #       middle_emulation enabled
 #   }
-input "2:1:PS/2_Generic_Mouse" {
+input "*" {
   accel_profile "flat"
   pointer_accel 0.5
 }
