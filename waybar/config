@@ -4,7 +4,7 @@
     "height": 27,
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "pulseaudio#source", "battery"],
+    "modules-right": ["tray", "pulseaudio", "pulseaudio#source", "battery"],
     "sway/window": {
         "max-length": 50
     },
@@ -44,5 +44,10 @@
       "on-click": "amixer set Capture toggle",
       "on-scroll-up": "amixer set Capture 5%+",
       "on-scroll-down": "amixer set Capture 5%-",
+    },
+    "tray": {
+      "icon-size": 21,
+      "spacing": 10,
     }
+
 }
