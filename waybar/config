@@ -1,0 +1,48 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 27,
+    "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "pulseaudio#source", "battery"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "tray": {
+      "icon-size": 18,
+      "spacing": 15
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""],
+        },
+        "scroll-step": 1,
+        "on-click": "amixer set Master toggle",
+        "on-click-right": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "pulseaudio#source": {
+      "format": "{format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "0% ",
+      "on-click": "amixer set Capture toggle",
+      "on-scroll-up": "amixer set Capture 5%+",
+      "on-scroll-down": "amixer set Capture 5%-",
+    }
+}
