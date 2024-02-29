@@ -60,9 +60,26 @@ return {
       on_attach = on_attach,
     })
 
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
-      on_attach = on_attach
+      on_attach = function(client, bufnr)                        -- allows us to define a set of keymaps that will only apply when a given language server attaches to a buffer
+        opts.buffer = bufnr
+        client.resolved_capabilities.document_formatting = false -- disable formatting from tsserver
+
+        -- set keybinds
+        opts.desc = "Show LSP references"
+
+
+        vim.lsp.buf.format({
+          filter = client.name ~= "tsserver"
+        })
+      end
+      ,
     })
 
     lspconfig["cssls"].setup({
