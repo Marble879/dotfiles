@@ -18,3 +18,4 @@ vim.opt.ignorecase = true
 
 -- System wide copy with yy
 vim.opt.clipboard = "unnamed"
+vim.opt.textwidth = 80
