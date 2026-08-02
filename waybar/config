@@ -4,13 +4,23 @@
     "height": 27,
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "pulseaudio#source", "battery"],
+    "modules-right": ["custom/nightlight", "tray", "network", "pulseaudio", "pulseaudio#source", "battery"],
     "sway/window": {
         "max-length": 50
     },
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "interface": "wlp0s20f3",
+        "format-wifi": "{essid} {icon}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰤮  Disconnected",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "tooltip-format": "{ifname}: {ipaddress}",
+        "on-click": "$HOME/.config/waybar/scripts/wifimenu.sh",
+        "on-click-right": "nmcli radio wifi toggle"
     },
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
@@ -33,7 +43,7 @@
             "default": ["", ""],
         },
         "scroll-step": 1,
-        "on-click": "amixer set Master toggle",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "ignored-sinks": ["Easy Effects Sink"]
     },
@@ -41,13 +51,20 @@
       "format": "{format_source}",
       "format-source": "{volume}% ",
       "format-source-muted": "0% ",
-      "on-click": "amixer set Capture toggle",
-      "on-scroll-up": "amixer set Capture 5%+",
-      "on-scroll-down": "amixer set Capture 5%-",
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+      "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+",
+      "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
     },
     "tray": {
       "icon-size": 21,
       "spacing": 10,
-    }
-
+    },
+    "custom/nightlight": {
+        "exec": "$HOME/.config/waybar/scripts/nightlight/nightlight.sh",
+        "on-click": "$HOME/.config/waybar/scripts/nightlight/toggle-nightlight.sh",
+        "on-scroll-up": "$HOME/.config/waybar/scripts/nightlight/toggle-nightlight.sh up",
+        "on-scroll-down": "$HOME/.config/waybar/scripts/nightlight/toggle-nightlight.sh down",
+        "interval": 5,
+        "signal": 10
+    },
 }
