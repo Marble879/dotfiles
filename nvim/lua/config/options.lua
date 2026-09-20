@@ -10,8 +10,15 @@ vim.opt.softtabstop = 2
 -- use number of spaces to insert a <Tab>
 vim.opt.expandtab = true
 
--- Disable line wrapping
+-- Disable line wrapping globally, enable for markdown
 vim.opt.wrap = false
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
 
 -- Case insensitive searching Unless /C or capital in search
 vim.opt.ignorecase = true
